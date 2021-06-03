@@ -44,7 +44,7 @@ public class ClientController {
 
 	@GetMapping
 	public ResponseEntity<List<Client>> getClient(@RequestParam(required = false) String firstName,
-			@Pattern(regexp = "(0/91)?[7-9][0-9]{9}") @RequestParam(required = false) String mobileNumber,
+			@Pattern(regexp = "(0/91)?[7-9][0-9]{9}",message="Mobile Number must have 10 digits") @RequestParam(required = false) String mobileNumber,
 			@RequestParam(required = false) String idNumber) {
 		LOGGER.info("ClientController: getClient API Invoked");
 		List<Client> clients = clientService.fetch(firstName, mobileNumber, idNumber);
